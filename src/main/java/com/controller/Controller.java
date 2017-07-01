@@ -15,7 +15,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-@org.springframework.stereotype.Controller
+//@org.springframework.stereotype.Controller
 public class Controller {
     private TimeService timeService;
     @Autowired(required = true)
@@ -67,25 +67,25 @@ public class Controller {
         return map;
     }
 
-    @RequestMapping(value = "/action", params = "add", method = RequestMethod.GET)
-    public String addTime(TimeEx timeEx){
-        timeService.addTime(timeEx);
-        return "redirect:/";
-    }
-    @RequestMapping(value = "/action", params = "delete", method = RequestMethod.GET)
-    public String deleteTime(@ModelAttribute("time") TimeEx timeEx){
-        timeService.deleteTime(timeEx);
-        return "redirect:/";
-    }
-    @RequestMapping(value = "/action", params = "update", method = RequestMethod.GET)
-    public String searchTime(@ModelAttribute("time") TimeEx timeEx){
-        timeService.searchTime(timeEx);
-        return "time";
-    }
-
-    @RequestMapping(value = "/update", method = RequestMethod.GET)
-    public String updateTime(@ModelAttribute("time") TimeEx timeEx){
-        timeService.updateTime(timeEx);
-        return "redirect:/";
-    }
+//    @RequestMapping(value = "/action", params = "add", method = RequestMethod.GET)
+//    public String addTime(TimeEx timeEx){
+//        timeService.addTime(timeEx);
+//        return "redirect:/";
+//    }
+//    @RequestMapping(value = "/action", params = "delete", method = RequestMethod.GET)
+//    public String deleteTime(@ModelAttribute("time") TimeEx timeEx){
+//        timeService.deleteTime(timeEx);
+//        return "redirect:/";
+//    }
+//    @RequestMapping(value = "/action", params = "update", method = RequestMethod.GET)
+//    public String searchTime(@ModelAttribute("time") TimeEx timeEx){
+//        timeService.searchTime(timeEx);
+//        return "time";
+//    }
+//
+//    @RequestMapping(value = "/update", method = RequestMethod.GET)
+//    public String updateTime(@ModelAttribute("time") TimeEx timeEx){
+//        timeService.updateTime(timeEx);
+//        return "redirect:/";
+//    }
 }

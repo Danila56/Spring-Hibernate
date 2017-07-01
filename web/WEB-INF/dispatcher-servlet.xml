@@ -36,6 +36,8 @@
         <property name="annotatedClasses">
             <list>
                 <value>com.model.TimeEx</value>
+                <value>com.model.Role</value>
+                <value>com.model.User</value>
             </list>
         </property>
         <property name="hibernateProperties">
@@ -50,6 +52,20 @@
     </bean>
     <bean id="timeService" class="com.service.TimeService">
         <property name="timeDAO" ref="timeDAO"/>
+    </bean>
+
+    <bean id="userDAO" class="com.dao.UserDAO">
+        <property name="sessionFactory" ref="hibernate4AnnotatedSessionFactory"/>
+    </bean>
+    <bean id="userService" class="com.service.UserService">
+        <property name="userDAO" ref="userDAO"/>
+    </bean>
+
+    <bean id="roleDAO" class="com.dao.RoleDAO">
+        <property name="sessionFactory" ref="hibernate4AnnotatedSessionFactory"/>
+    </bean>
+    <bean id="roleService" class="com.service.RoleService">
+        <property name="roleDAO" ref="roleDAO"/>
     </bean>
 
     <tx:annotation-driven transaction-manager="transactionManager"/>

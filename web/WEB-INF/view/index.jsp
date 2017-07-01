@@ -1,47 +1,61 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%--
+  Created by IntelliJ IDEA.
+  User: User
+  Date: 01.07.2017
+  Time: 10:59
+  To change this template use File | Settings | File Templates.
+--%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
     <title>Title</title>
-    <link rel="stylesheet" type="text/css" href="<c:url value="../resources/style.css"/>">
-    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" type="text/css" rel="stylesheet" media="screen" />
 </head>
 <body>
-        <h1>Time</h1>
-        <hr>
-        <form action="/time" method="get">
-            <input type="text" class="timing" />
-            <input type="submit" value="Add">
-        </form>
+<form action="/user/add" method="get">
+    <input type="text" name="username" placeholder="Введите имя пользователя" size="35">
+    <input type="password" name="password" placeholder="Введите пароль">
+    <input type="submit" value="Add User">
+</form>
+<form action="/role/add">
+    <input type="text" name="role" placeholder="Введите новую роль">
+    <input type="submit" value="Add Role">
+</form>
 
-        <form action="/action" method="get">
-            <input type="time" name="time"/>
-            <input type="submit" name="add" value="add">
-        </form>
+<table>
+    <tr>
+        <th>ID</th>
+        <th>Username</th>
+        <th>Password</th>
+        <th>Delete</th>
+        <th>Edit</th>
+    </tr>
+    <c:forEach items="${listUser}" var="listUser">
+        <tr>
+            <td>${listUser.id}</td>
+            <td><a href="/user/roles/${listUser.id}">${listUser.username}</a></td>
+            <td>${listUser.password}</td>
+            <td><a href="/user/delete/${listUser.id}">Delete</a></td>
+            <td><a href="/user/update/${listUser.id}">Edit</a></td>
+        </tr>
+    </c:forEach>
+</table>
 
-        <form:form method="get" modelAttribute="time" action="/action">
-            <%--<form:input path="time" type="time" /> <!-- bind to user.name-->--%>
-            <%--<form:label path="time">TimeList</form:label>--%>
-            <%--<form:checkboxes items="${boxTimeList}" path="time" />--%>
-
-            <form:label path="time">Time</form:label>
-            <form:select path="time">
-                <form:option value="NONE" label="Select Date"/>
-                <form:options items="${downTimeList}"/>
-            </form:select><br>
-
-            <input type="submit" name="add" value="add"/>
-            <input type="submit" name="delete" value="delete">
-            <input type="submit" name="update" value="update">
-        </form:form>
-
-    <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
-    <script src="<c:url value="../resources/timingfield.js"/>"></script>
-    <script type="text/javascript">
-        jQuery(document).ready(function($) {
-        $(".timing").timingfield();
-        });
-    </script>
+<table>
+    <tr>
+        <th>ID</th>
+        <th>Role</th>
+        <th>Delete</th>
+        <th>Edit</th>
+    </tr>
+    <c:forEach items="${listRole}" var="listRole">
+        <tr>
+            <td>${listRole.id}</td>
+            <td><a href="/role/users/${listRole.id}">${listRole.role}</a></td>
+            <td><a href="/role/delete/${listRole.id}">Delete</a></td>
+            <td><a href="/role/update/${listRole.id}">Edit</a></td>
+        </tr>
+    </c:forEach>
+</table>
 </body>
 </html>

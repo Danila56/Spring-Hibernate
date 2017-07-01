@@ -60,16 +60,32 @@ public class Main {
 //            System.out.println(timeEx.getTime());
 //            session.getTransaction().commit();
 
-            session.beginTransaction();
-            Query query = session.createQuery("delete from TimeEx where time=:t");
-            TimeEx timeEx = new TimeEx();
-            Time time = new Time(11, 05, 59);
-            timeEx.setTime(time);
-            query.setParameter("t", timeEx.getTime());
-            int resoult = query.executeUpdate();
-            System.out.println(resoult);
+//            session.beginTransaction();
+//            Query query = session.createQuery("delete from TimeEx where time=:t");
+//            TimeEx timeEx = new TimeEx();
+//            Time time = new Time(11, 05, 59);
+//            timeEx.setTime(time);
 //            query.setParameter("t", timeEx.getTime());
-//            List<TimeEx> list = query.list();
+//            int resoult = query.executeUpdate();
+//            System.out.println(resoult);
+////          query.setParameter("t", timeEx.getTime());
+////          List<TimeEx> list = query.list();
+//            session.getTransaction().commit();
+
+//            session.beginTransaction();
+//            Role role = (Role) session.load(Role.class, new Integer(1));
+//            role.setRole("user");
+//            session.update(role);
+//            User user = (User) session.load(User.class, new Integer(1));
+//            user.setUsername("user21");
+//            session.update(user);
+//            session.getTransaction().commit();
+
+            session.beginTransaction();
+            User user = (User) session.load(User.class, new Integer(1));
+            for (Role r: user.getRoles()){
+                System.out.println(r.getRole());
+            }
             session.getTransaction().commit();
         } finally {
             session.close();

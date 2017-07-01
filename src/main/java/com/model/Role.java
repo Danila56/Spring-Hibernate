@@ -1,5 +1,7 @@
 package com.model;
 
+import org.hibernate.annotations.Proxy;
+
 import javax.persistence.*;
 import java.util.Set;
 
@@ -7,16 +9,19 @@ import java.util.Set;
  * Created by User on 29.06.2017.
  */
 @Entity
+//@Proxy(lazy = false)
 public class Role {
     private int id;
     private String role;
     private Set<User> users;
 
-    @ManyToMany(mappedBy = "roles")
+//    @ManyToMany(mappedBy = "roles")
+    @ManyToMany
+    @JoinTable(name = "user_roles", joinColumns = @JoinColumn(name = "role_id"),
+            inverseJoinColumns = @JoinColumn(name = "user_id"))
     public Set<User> getUsers() {
         return users;
     }
-
     public void setUsers(Set<User> users) {
         this.users = users;
     }
@@ -60,5 +65,14 @@ public class Role {
         int result = id;
         result = 31 * result + (role != null ? role.hashCode() : 0);
         return result;
+    }
+
+    @Override
+    public String toString() {
+        return "Role{" +
+                "id=" + id +
+                ", role='" + role + '\'' +
+                ", users=" + users +
+                '}';
     }
 }

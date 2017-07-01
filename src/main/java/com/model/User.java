@@ -1,5 +1,7 @@
 package com.model;
 
+import org.hibernate.annotations.Proxy;
+
 import javax.persistence.*;
 import java.util.Set;
 
@@ -7,19 +9,19 @@ import java.util.Set;
  * Created by User on 29.06.2017.
  */
 @Entity
+//@Proxy(lazy = false)
 public class User {
     private int id;
     private String password;
     private String username;
     private Set<Role> roles;
 
-    @ManyToMany
-    @JoinTable(name = "user_roles", joinColumns = @JoinColumn(name = "user_id"),
-            inverseJoinColumns = @JoinColumn(name = "role_id"))
+    @ManyToMany(fetch = FetchType.EAGER, mappedBy = "users", cascade = CascadeType.ALL)
+//    @JoinTable(name = "user_roles", joinColumns = @JoinColumn(name = "user_id"),
+//            inverseJoinColumns = @JoinColumn(name = "role_id"))
     public Set<Role> getRoles() {
         return roles;
     }
-
     public void setRoles(Set<Role> roles) {
         this.roles = roles;
     }
@@ -65,8 +67,7 @@ public class User {
         if (id != user.id) return false;
         if (password != null ? !password.equals(user.password) : user.password != null) return false;
         if (username != null ? !username.equals(user.username) : user.username != null) return false;
-
-        return true;
+        return roles != null ? roles.equals(user.roles) : user.roles == null;
     }
 
     @Override
@@ -74,6 +75,17 @@ public class User {
         int result = id;
         result = 31 * result + (password != null ? password.hashCode() : 0);
         result = 31 * result + (username != null ? username.hashCode() : 0);
+        result = 31 * result + (roles != null ? roles.hashCode() : 0);
         return result;
+    }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "id=" + id +
+                ", password='" + password + '\'' +
+                ", username='" + username + '\'' +
+                ", roles=" + roles +
+                '}';
     }
 }
