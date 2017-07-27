@@ -7,11 +7,14 @@ import com.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @org.springframework.stereotype.Controller
 public class MainController {
@@ -28,7 +31,7 @@ public class MainController {
         this.roleService = roleService;
     }
 
-    @RequestMapping(value = "/", method = RequestMethod.GET)
+    @RequestMapping(value = {"/", "/index"}, method = RequestMethod.GET)
     public String main(Model model){
         model.addAttribute("users", new User());
         model.addAttribute("listUser", userService.list());
@@ -83,16 +86,29 @@ public class MainController {
 
     @RequestMapping(value = "/user/roles/{id}", method = RequestMethod.GET)
     public String users(@PathVariable("id") int id, Model model){
-        List<Role> list = roleService.list();
+        List<Role> list = userService.roleList(id);
         model.addAttribute("listRole", list);
         model.addAttribute("role", new Role());
+        model.addAttribute("user", new User());
+        model.addAttribute("username", userService.searchUser(id));
         return "roles";
     }
     @RequestMapping(value = "/role/users/{id}", method = RequestMethod.GET)
     public String roles(@PathVariable("id") int id, Model model){
-        List<User> list = userService.list();
+        List<User> list = roleService.roleList(id);
         model.addAttribute("listUser", list);
         model.addAttribute("user", new User());
+        model.addAttribute("role", new Role());
+        model.addAttribute("role2", roleService.searchRole(id));
         return "users";
+    }
+    @ModelAttribute("downRoleList")
+    public Map<String, String> downRoleList(){
+        Map<String, String> map = new HashMap<>();
+        List<Role> list = roleService.list();
+        for (Role r: list){
+            map.put(String.valueOf(r.getRole()), String.valueOf(r.getRole()));
+        }
+        return map;
     }
 }

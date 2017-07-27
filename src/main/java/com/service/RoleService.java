@@ -2,6 +2,8 @@ package com.service;
 
 import com.dao.RoleDAO;
 import com.model.Role;
+import com.model.User;
+import org.hibernate.Query;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -37,5 +39,10 @@ public class RoleService {
     @Transactional
     public Role searchRole(int id){
         return roleDAO.searchRole(id);
+    }
+
+    @Transactional
+    public List<User> roleList(int id){
+        return roleDAO.roleList(id);
     }
 }

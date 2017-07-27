@@ -16,7 +16,8 @@ public class User {
     private String username;
     private Set<Role> roles;
 
-    @ManyToMany(fetch = FetchType.EAGER, mappedBy = "users", cascade = CascadeType.ALL)
+    @ManyToMany(mappedBy = "users")
+//    @ManyToMany(fetch = FetchType.EAGER, mappedBy = "users", cascade = CascadeType.ALL)
 //    @JoinTable(name = "user_roles", joinColumns = @JoinColumn(name = "user_id"),
 //            inverseJoinColumns = @JoinColumn(name = "role_id"))
     public Set<Role> getRoles() {

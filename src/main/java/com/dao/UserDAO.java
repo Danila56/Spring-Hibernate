@@ -7,7 +7,9 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.stereotype.Repository;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
 @Repository
 public class UserDAO {
@@ -74,11 +76,11 @@ public class UserDAO {
         session.update(user);
     }
 
-//    public void roleList(int id){
-//        Session session = this.sessionFactory.getCurrentSession();
-//        User user = (User) session.load(User.class, new Integer(id));
-//        for (Role r: user.getRoles()){
-//            System.out.println(r.getRole());
-//        }
-//    }
+    public List<Role> roleList(int id){
+        Session session = this.sessionFactory.getCurrentSession();
+        User user = (User) session.load(User.class, new Integer(id));
+        Set<Role> roles = user.getRoles();
+        List<Role> list = new ArrayList<>(roles);
+        return list;
+    }
 }

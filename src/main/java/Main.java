@@ -36,7 +36,8 @@ public class Main {
     public static void main(final String[] args) throws Exception {
         final Session session = getSession();
         try {
-//            session.beginTransaction();
+            session.beginTransaction();
+
 //            User user = new User();
 //            user.setId(3);
 //            user.setUsername("danil");
@@ -46,21 +47,15 @@ public class Main {
 //            roles.add(role);
 //            user.setRoles(roles);
 //            session.save(user);
-//            session.getTransaction().commit();
 
-//            session.beginTransaction();
 //            TimeEx timeEx = new TimeEx();
 //            Time time = new Time(10, 20, 30);
 //            timeEx.setTime(time);
 //            session.save(timeEx);
-//            session.getTransaction().commit();
 
-//            session.beginTransaction();
 //            TimeEx timeEx = (TimeEx) session.load(TimeEx.class, new Integer(1));
 //            System.out.println(timeEx.getTime());
-//            session.getTransaction().commit();
 
-//            session.beginTransaction();
 //            Query query = session.createQuery("delete from TimeEx where time=:t");
 //            TimeEx timeEx = new TimeEx();
 //            Time time = new Time(11, 05, 59);
@@ -70,22 +65,27 @@ public class Main {
 //            System.out.println(resoult);
 ////          query.setParameter("t", timeEx.getTime());
 ////          List<TimeEx> list = query.list();
-//            session.getTransaction().commit();
 
-//            session.beginTransaction();
 //            Role role = (Role) session.load(Role.class, new Integer(1));
-//            role.setRole("user");
+//            role.setRole("user2222");
 //            session.update(role);
 //            User user = (User) session.load(User.class, new Integer(1));
-//            user.setUsername("user21");
+//            user.setUsername("user2222");
 //            session.update(user);
-//            session.getTransaction().commit();
 
-            session.beginTransaction();
-            User user = (User) session.load(User.class, new Integer(1));
+//            User user = (User) session.load(User.class, new Integer(1));
+//            for (Role r : user.getRoles()) {
+//                Query query = session.createQuery("from Role where role=:r");
+//                query.setParameter("r", r.getRole());
+//                System.out.println(query);
+//            }
+
+            User user = (User) session.get(User.class, new Integer(1));
+            user.getUsername();
             for (Role r: user.getRoles()){
                 System.out.println(r.getRole());
             }
+
             session.getTransaction().commit();
         } finally {
             session.close();

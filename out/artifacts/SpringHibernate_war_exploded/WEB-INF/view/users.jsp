@@ -12,7 +12,7 @@
     <title>Title</title>
 </head>
 <body>
-Список пользователей
+Список пользователей с ролью ${role2.role}
 <table>
     <tr>
         <th>ID</th>

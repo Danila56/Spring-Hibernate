@@ -2,3 +2,14 @@ h1{
     font-size: 15px;
     color: #3e5e80;
 }
+a, a:visited, a:focus{
+    text-decoration: none;
+    color: black;
+
+}
+a:hover {
+    color: #4793b5;
+}
+td {
+    text-align: center;
+}

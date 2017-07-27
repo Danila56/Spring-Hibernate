@@ -16,7 +16,7 @@ public class Role {
     private Set<User> users;
 
 //    @ManyToMany(mappedBy = "roles")
-    @ManyToMany
+    @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(name = "user_roles", joinColumns = @JoinColumn(name = "role_id"),
             inverseJoinColumns = @JoinColumn(name = "user_id"))
     public Set<User> getUsers() {

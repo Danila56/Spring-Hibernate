@@ -1,6 +1,7 @@
 package com.service;
 
 import com.dao.UserDAO;
+import com.model.Role;
 import com.model.User;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -37,5 +38,10 @@ public class UserService {
     @Transactional
     public User searchUser(int id){
         return userDAO.searchUser(id);
+    }
+
+    @Transactional
+    public List<Role> roleList(int id){
+        return userDAO.roleList(id);
     }
 }
