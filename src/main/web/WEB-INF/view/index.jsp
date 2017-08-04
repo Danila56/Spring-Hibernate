@@ -7,16 +7,12 @@
     <title>Database</title>
     <%--<link rel="stylesheet" type="text/css" href="<c:url value="../resources/bootstrap.min.css"/>">--%>
     <%--<link rel="stylesheet" type="text/css" href="<c:url value="../resources/bootstrap-theme.min.css"/>">--%>
-    <link rel="stylesheet" type="text/css" href="<c:url value="../resources/style.css"/>">
+    <link rel="stylesheet" type="text/css" href="<c:url value="../../resources/style.css"/>">
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.12/css/jquery.dataTables.min.css">
     <script type="text/javascript" src="https://code.jquery.com/jquery-1.12.3.min.js"></script>
     <script type="text/javascript" src="https://cdn.datatables.net/v/dt/dt-1.10.12/datatables.min.js"></script>
 </head>
 <body>
-<c:out value="hello"/>
-<form action="/index" method="get">
-    <input type="submit" value="List">
-</form>
 <table width="100%" border="1">
     <tr>
         <td height="50">
@@ -24,11 +20,11 @@
                 <input path="username" type="text" name="username" placeholder="Введите имя пользователя" size="30">
                 <input path="password" type="password" name="password" placeholder="Введите пароль">
 
-                <%--<form:label path="role">Role</form:label>--%>
-                <%--<form:select path="role">--%>
-                    <%--<form:option value="NONE" label="Select Role"/>--%>
-                    <%--<form:options items="${downRoleList}"/>--%>
-                <%--</form:select>--%>
+                <form:label path="role">Role</form:label>
+                <form:select path="role">
+                    <form:option value="NONE" label="Select Role"/>
+                    <form:options items="${downRoleList}"/>
+                </form:select>
 
                 <input type="submit" value="Add User">
             </form:form>

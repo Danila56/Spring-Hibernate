@@ -11,7 +11,6 @@
     <title>Edit</title>
 </head>
 <body>
-${users}
 <form action="/role/add" method="get">
     <input hidden="true" type="text" name="id" value="${role.id}">
     <input type="text" name="role" value="${role.role}">

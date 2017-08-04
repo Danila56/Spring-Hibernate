@@ -12,7 +12,7 @@
 </head>
 <body>
 <form action="/user/add" method="get">
-    <input type="text" name="id" value="${user.id}">
+    <input hidden="true" type="text" name="id" value="${user.id}">
     <input type="text" name="username" value="${user.username}">
     <input type="text" name="password" value="${user.password}">
     <input type="submit" value="Edit">

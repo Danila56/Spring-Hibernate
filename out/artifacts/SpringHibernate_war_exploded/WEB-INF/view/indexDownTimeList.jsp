@@ -4,7 +4,7 @@
 <html>
 <head>
     <title>Title</title>
-    <link rel="stylesheet" type="text/css" href="<c:url value="../resources/style.css"/>">
+    <link rel="stylesheet" type="text/css" href="<c:url value="../../resources/style.css"/>">
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" type="text/css" rel="stylesheet" media="screen" />
 </head>
 <body>
@@ -37,7 +37,7 @@
         </form:form>
 
     <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
-    <script src="<c:url value="../resources/timingfield.js"/>"></script>
+    <script src="<c:url value="../../resources/timingfield.js"/>"></script>
     <script type="text/javascript">
         jQuery(document).ready(function($) {
         $(".timing").timingfield();

@@ -1,5 +1,6 @@
-package com.dao;
+package com.dao.impl;
 
+import com.dao.RoleDAO;
 import com.model.Role;
 import com.model.User;
 import org.hibernate.Query;
@@ -13,7 +14,7 @@ import java.util.List;
 import java.util.Set;
 
 @Repository
-public class RoleDAO {
+public class RoleDAOImpl implements RoleDAO {
     @Autowired
     SessionFactory sessionFactory;
 

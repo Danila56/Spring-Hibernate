@@ -5,8 +5,8 @@ import com.model.User;
 import com.service.RoleService;
 import com.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.ui.Model;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -18,21 +18,14 @@ import java.util.Map;
 
 @org.springframework.stereotype.Controller
 public class MainController {
-    UserService userService;
-    @Autowired(required = true)
-    @Qualifier("userService")
-    public void setUserService(UserService userService) {
-        this.userService = userService;
-    }
-    RoleService roleService;
-    @Autowired(required = true)
-    @Qualifier("roleService")
-    public void setRoleService(RoleService roleService) {
-        this.roleService = roleService;
-    }
+    @Autowired
+    private UserService userService;
+
+    @Autowired
+    private RoleService roleService;
 
     @RequestMapping(value = {"/", "/index"}, method = RequestMethod.GET)
-    public String main(Model model){
+    public String main(ModelMap model){
         model.addAttribute("users", new User());
         model.addAttribute("listUser", userService.list());
         model.addAttribute("roles", new Role());
@@ -75,13 +68,12 @@ public class MainController {
     @RequestMapping(value = "user/update/{id}", method = RequestMethod.GET)
     public String searchUser(@PathVariable("id") int id, Model model){
         model.addAttribute("user", userService.searchUser(id));
-        return "editUser";
+        return "/editUser";
     }
     @RequestMapping(value = "role/update/{id}", method = RequestMethod.GET)
     public String searchRole(@PathVariable("id") int id, Model model){
         model.addAttribute("role", roleService.searchRole(id));
-//        model.addAttribute("users", roleService.searchRole(id).getUsers().toString());
-        return "editRole";
+        return "/editRole";
     }
 
     @RequestMapping(value = "/user/roles/{id}", method = RequestMethod.GET)
@@ -91,7 +83,7 @@ public class MainController {
         model.addAttribute("role", new Role());
         model.addAttribute("user", new User());
         model.addAttribute("username", userService.searchUser(id));
-        return "roles";
+        return "/roles";
     }
     @RequestMapping(value = "/role/users/{id}", method = RequestMethod.GET)
     public String roles(@PathVariable("id") int id, Model model){
@@ -100,7 +92,7 @@ public class MainController {
         model.addAttribute("user", new User());
         model.addAttribute("role", new Role());
         model.addAttribute("role2", roleService.searchRole(id));
-        return "users";
+        return "/users";
     }
     @ModelAttribute("downRoleList")
     public Map<String, String> downRoleList(){

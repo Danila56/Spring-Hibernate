@@ -1,4 +1,4 @@
-package com.service;
+package com.service.impl;
 
 import com.dao.impl.TimeDAO;
 import com.model.TimeEx;

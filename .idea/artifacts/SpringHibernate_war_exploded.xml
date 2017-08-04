@@ -42,6 +42,14 @@
           <element id="library" level="project" name="Maven: org.springframework:spring-webmvc:4.0.5.RELEASE" />
           <element id="library" level="project" name="Maven: xml-apis:xml-apis:1.0.b2" />
           <element id="library" level="project" name="Maven: antlr:antlr:2.7.7" />
+          <element id="library" level="project" name="Maven: com.zaxxer:HikariCP:2.4.1" />
+          <element id="library" level="project" name="Maven: org.slf4j:slf4j-api:1.7.12" />
+          <element id="library" level="project" name="Maven: nz.net.ultraq.thymeleaf:thymeleaf-layout-dialect:1.2.9" />
+          <element id="library" level="project" name="Maven: ognl:ognl:3.0.8" />
+          <element id="library" level="project" name="Maven: org.thymeleaf.extras:thymeleaf-extras-springsecurity4:2.1.2.RELEASE" />
+          <element id="library" level="project" name="Maven: org.thymeleaf:thymeleaf-spring4:2.1.4.RELEASE" />
+          <element id="library" level="project" name="Maven: org.thymeleaf:thymeleaf:2.1.4.RELEASE" />
+          <element id="library" level="project" name="Maven: org.unbescape:unbescape:1.1.0.RELEASE" />
         </element>
       </element>
     </root>

@@ -1,15 +1,13 @@
 package com.controller;
 
 import com.model.TimeEx;
-import com.service.TimeService;
+import com.service.impl.TimeService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import java.sql.Time;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -17,12 +15,8 @@ import java.util.Map;
 
 //@org.springframework.stereotype.Controller
 public class Controller {
-    private TimeService timeService;
     @Autowired(required = true)
-    @Qualifier("timeService")
-    public void setTimeService(TimeService timeService) {
-        this.timeService = timeService;
-    }
+    private TimeService timeService;
 
     @SuppressWarnings("unchecked")
     @RequestMapping(value = "/", method = RequestMethod.GET)

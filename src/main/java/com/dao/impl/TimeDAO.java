@@ -1,4 +1,4 @@
-package com.dao;
+package com.dao.impl;
 
 import com.model.TimeEx;
 import org.hibernate.Query;
