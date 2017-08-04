@@ -13,10 +13,6 @@
     <script type="text/javascript" src="https://cdn.datatables.net/v/dt/dt-1.10.12/datatables.min.js"></script>
 </head>
 <body>
-<c:out value="hello"/>
-<form action="/index" method="get">
-    <input type="submit" value="List">
-</form>
 <table width="100%" border="1">
     <tr>
         <td height="50">

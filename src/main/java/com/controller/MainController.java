@@ -24,6 +24,17 @@ public class MainController {
     @Autowired
     private RoleService roleService;
 
+    @RequestMapping(value = "/login", method = RequestMethod.GET)
+    public String login(Model model, String error, String logout){
+        if (error != null){
+            model.addAttribute("error", "username or password incorect");
+        }
+        if (logout != null){
+            model.addAttribute("message", "succesfull");
+        }
+        return "login";
+    }
+
     @RequestMapping(value = {"/", "/index"}, method = RequestMethod.GET)
     public String main(ModelMap model){
         model.addAttribute("users", new User());

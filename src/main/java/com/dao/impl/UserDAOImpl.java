@@ -55,4 +55,15 @@ public class UserDAOImpl implements UserDAO {
         List<Role> list = new ArrayList<>(roles);
         return list;
     }
+
+
+    public User findByUsername(String username){
+        Session session = this.sessionFactory.getCurrentSession();
+        List<User> list = new ArrayList<>();
+        list = session.createQuery("from com.model.User where username=?").setParameter(0, username).list();
+        if (list.size()>0){
+            return list.get(0);
+        }
+        else return null;
+    }
 }

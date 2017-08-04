@@ -15,4 +15,5 @@ public interface UserDAO {
     User searchUser(int id);
     void updateUser(User user);
     List<Role> roleList(int id);
+    User findByUsername(String username);
 }
