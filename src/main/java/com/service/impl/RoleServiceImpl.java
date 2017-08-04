@@ -1,9 +1,9 @@
 package com.service;
 
-import com.dao.RoleDAO;
+import com.dao.impl.RoleDAOImpl;
 import com.model.Role;
 import com.model.User;
-import org.hibernate.Query;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -11,38 +11,36 @@ import java.util.List;
 
 @Service
 public class RoleService {
-    RoleDAO roleDAO;
-    public void setRoleDAO(RoleDAO roleDAO) {
-        this.roleDAO = roleDAO;
-    }
+    @Autowired
+    RoleDAOImpl roleDAOImpl;
 
     @Transactional
     public void addRole(Role role){
-        roleDAO.addRole(role);
+        roleDAOImpl.addRole(role);
     }
 
     @Transactional
     public List<Role> list(){
-        return roleDAO.list();
+        return roleDAOImpl.list();
     }
 
     @Transactional
     public void deleteRole(int id){
-        roleDAO.deleteRole(id);
+        roleDAOImpl.deleteRole(id);
     }
 
     @Transactional
     public void updateRole(Role role){
-        roleDAO.updateRole(role);
+        roleDAOImpl.updateRole(role);
     }
 
     @Transactional
     public Role searchRole(int id){
-        return roleDAO.searchRole(id);
+        return roleDAOImpl.searchRole(id);
     }
 
     @Transactional
     public List<User> roleList(int id){
-        return roleDAO.roleList(id);
+        return roleDAOImpl.roleList(id);
     }
 }

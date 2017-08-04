@@ -13,6 +13,10 @@
     <script type="text/javascript" src="https://cdn.datatables.net/v/dt/dt-1.10.12/datatables.min.js"></script>
 </head>
 <body>
+<c:out value="hello"/>
+<form action="/index" method="get">
+    <input type="submit" value="List">
+</form>
 <table width="100%" border="1">
     <tr>
         <td height="50">
@@ -20,11 +24,11 @@
                 <input path="username" type="text" name="username" placeholder="Введите имя пользователя" size="30">
                 <input path="password" type="password" name="password" placeholder="Введите пароль">
 
-                <form:label path="role">Role</form:label>
-                <form:select path="role">
-                    <form:option value="NONE" label="Select Role"/>
-                    <form:options items="${downRoleList}"/>
-                </form:select>
+                <%--<form:label path="role">Role</form:label>--%>
+                <%--<form:select path="role">--%>
+                    <%--<form:option value="NONE" label="Select Role"/>--%>
+                    <%--<form:options items="${downRoleList}"/>--%>
+                <%--</form:select>--%>
 
                 <input type="submit" value="Add User">
             </form:form>

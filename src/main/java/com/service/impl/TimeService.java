@@ -1,7 +1,8 @@
 package com.service;
 
-import com.dao.TimeDAO;
+import com.dao.impl.TimeDAO;
 import com.model.TimeEx;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -9,10 +10,8 @@ import java.util.List;
 
 @Service
 public class TimeService {
+    @Autowired
     private TimeDAO timeDAO;
-    public void setTimeDAO(TimeDAO timeDAO) {
-        this.timeDAO = timeDAO;
-    }
 
     @Transactional
     public List<TimeEx> time(){
