@@ -3,6 +3,7 @@ package com.model;
 import org.hibernate.annotations.Proxy;
 
 import javax.persistence.*;
+import java.util.List;
 import java.util.Set;
 
 /**
@@ -13,16 +14,16 @@ import java.util.Set;
 public class Role {
     private int id;
     private String role;
-    private Set<User> users;
+    private List<User> users;
 
 //    @ManyToMany(mappedBy = "roles")
     @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(name = "user_roles", joinColumns = @JoinColumn(name = "role_id"),
             inverseJoinColumns = @JoinColumn(name = "user_id"))
-    public Set<User> getUsers() {
+    public List<User> getUsers() {
         return users;
     }
-    public void setUsers(Set<User> users) {
+    public void setUsers(List<User> users) {
         this.users = users;
     }
 

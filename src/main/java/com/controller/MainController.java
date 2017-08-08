@@ -37,15 +37,15 @@ public class MainController {
 
     @RequestMapping(value = {"/", "/index"}, method = RequestMethod.GET)
     public String main(ModelMap model){
-        model.addAttribute("users", new User());
+        model.addAttribute("user", new User());
         model.addAttribute("listUser", userService.list());
-        model.addAttribute("roles", new Role());
+        model.addAttribute("role", new Role());
         model.addAttribute("listRole", roleService.list());
         return "index";
     }
 
-    @RequestMapping(value = "/user/add", method = RequestMethod.GET)
-    public String addUser(User user){
+    @RequestMapping(value = "/user/add", method = RequestMethod.POST)
+    public String addUser(@ModelAttribute("user") User user){
         if (user.getId() != 0){
             userService.updateUser(user);
         }

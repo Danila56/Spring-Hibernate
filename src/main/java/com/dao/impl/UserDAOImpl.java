@@ -51,7 +51,7 @@ public class UserDAOImpl implements UserDAO {
     public List<Role> roleList(int id){
         Session session = this.sessionFactory.getCurrentSession();
         User user = (User) session.load(User.class, new Integer(id));
-        Set<Role> roles = user.getRoles();
+        List<Role> roles = user.getRoles();
         List<Role> list = new ArrayList<>(roles);
         return list;
     }
