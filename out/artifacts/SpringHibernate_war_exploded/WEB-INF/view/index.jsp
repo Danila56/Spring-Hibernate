@@ -29,14 +29,14 @@
 
     <%--<c:forEach items="${listRole}" var="role">--%>
         <%--<form:checkboxes items="${listRole}" itemLabel="role" itemValue="id" name="roles[0].id"/>--%>
-        <%--<input type="checkbox" name="roles[0].id" value="1">ROLE_ADMIN<br>--%>
-        <%--<input type="checkbox" name="roles[0].id" value="2">ROLE_USER<br>--%>
-        <%--<input type="checkbox" name="roles[0].id" value="3">ROLE_EDITOR--%>
+        <input type="checkbox" name="roles[0]" value="1">ROLE_ADMIN<br>
+        <input type="checkbox" name="roles[1]" value="2">ROLE_USER<br>
+        <input type="checkbox" name="roles[2]" value="3">ROLE_EDITOR
     <%--</c:forEach>--%>
 
-    <c:forEach items="${listRole}" var="role">
-        <input type="checkbox" name="roles[0].id" value="${role.id}">${role.role}
-    </c:forEach>
+    <%--<c:forEach items="${listRole}" var="role">--%>
+        <%--<input type="checkbox" name="roles[0].id" value="${role.id}">${role.role}<br>--%>
+    <%--</c:forEach>--%>
 
     <input type="submit" value="Add">
 </form:form>

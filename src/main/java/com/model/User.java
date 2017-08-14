@@ -1,8 +1,10 @@
 package com.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.hibernate.annotations.Proxy;
 
 import javax.persistence.*;
+import javax.xml.bind.annotation.XmlRootElement;
 import java.util.List;
 import java.util.Set;
 
@@ -11,10 +13,12 @@ import java.util.Set;
  */
 @Entity
 //@Proxy(lazy = false)
+@XmlRootElement
 public class User {
     private int id;
     private String password;
     private String username;
+    @JsonIgnore
     private List<Role> roles;
 
 //    @ManyToMany(mappedBy = "users")
